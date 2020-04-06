@@ -1,7 +1,14 @@
 Simple Docker - Nginx configuration
 ==================================
 
-# Install Docker and Portainer #
+This repo contains two stacks:
+
+  * a simple **nginx** server for development with a basic php stack.
+  * a very basic **reverse proxy** so you can spool more than one of the above.
+
+
+
+## Install Docker and Portainer ##
 
 Alpine:
 
@@ -14,11 +21,16 @@ Ubuntu:
 Then go to [portainer.io](https://www.portainer.io/installation/)
 or simply:
 
-`docker volume create portainer_data
-docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer`
+```
+docker volume create portainer_data
+docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+```
 
-and now point to [http://your-server.com:9000](http://localhost:9000) and enjoy Portainer.
+and now point to [your-server.com:9000](http://localhost:9000) and enjoy Portainer.
 
+### Autoload Docker
+
+`rc-update add dockerd`
 
 # Install, build and run the stack #
 
@@ -81,3 +93,7 @@ It's hard to avoid file permission issues when fiddling about with containers du
 
   * Run composer outside of the php container, as doing so would install all your dependencies owned by `root` within your vendor folder.
   * Run commands (ie Symfony's console, or Laravel's artisan) straight inside of your container. You can easily open a shell as described above and do your thing from there.
+
+## Credits ##
+Francesco D'Agostino, https://www.farm.it/
+Kasper Siig, https://www.freecodecamp.org/news/docker-nginx-letsencrypt-easy-secure-reverse-proxy-40165ba3aee2/

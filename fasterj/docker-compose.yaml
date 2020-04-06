@@ -5,37 +5,36 @@ version: "3.1"
 services:
   memcached:
     image: memcached:alpine
-    container_name: fasterj-memcached
+    container_name: ${STACK_PREFIX}-memcached
 
   mailhog:
     image: mailhog/mailhog:latest
-    container_name: fasterj-mailhog
+    container_name: ${STACK_PREFIX}-mailhog
     ports:
       - "8081:8025"
 
   redis:
     image: redis:alpine
-    container_name: fasterj-redis
+    container_name: ${STACK_PREFIX}-redis
 
   mariadb:
     image: mariadb:10.4
-    container_name: fasterj-mariadb
+    container_name: ${STACK_PREFIX}-mariadb
     working_dir: /application
     volumes:
       - .:/application
     environment:
-      - MYSQL_ROOT_PASSWORD=badPurpl310
-      - MYSQL_DATABASE=fasterj
-      - MYSQL_USER=fasterj
-      - MYSQL_PASSWORD=d@mpApple82
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${STACK_PREFIX}
+      - MYSQL_USER=${STACK_PREFIX}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     ports:
       - "8083:3306"
 
   webserver:
     image: nginx:alpine
     hostname: webserver
-
-    container_name: fasterj-webserver
+    container_name: ${STACK_PREFIX}-webserver
     working_dir: /application
     volumes:
         - .:/application
@@ -45,7 +44,7 @@ services:
 
   php-fpm:
     build: phpdocker/php-fpm
-    container_name: fasterj-php-fpm
+    container_name: ${STACK_PREFIX}-php-fpm
     working_dir: /application
     volumes:
       - .:/application
