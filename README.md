@@ -6,7 +6,7 @@ This repo contains two stacks:
   * a simple **nginx** server for development with a basic php stack.
   * a very basic **reverse proxy** so you can spool more than one of the above.
 
-
+**Please note**: passwords and prefix are stored in the environment file `.env`
 
 ## Install Docker and Portainer ##
 
@@ -30,11 +30,13 @@ and now point to [your-server.com:9000](http://localhost:9000) and enjoy Portain
 
 ### Autoload Docker
 
-`rc-update add dockerd`
+`rc-update add docker`
 
 # Install, build and run the stack #
 
 Copy this folder under `/opt`, then
+
+Please make a copy of `./fasterj/env.default` and name it `fasterj/.env` then edit your passwords and info.
 
 `cd /opt/fasterj`
 
