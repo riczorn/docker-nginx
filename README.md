@@ -1,7 +1,7 @@
 Simple Docker - Nginx configuration
 ==================================
 
-This repo contains two stacks:
+This project contains two stacks:
 
   * a simple **nginx** server for development with a basic php stack.
   * a very basic **reverse proxy** so you can spool more than one of the above.
@@ -70,8 +70,6 @@ Service|Hostname|Port number
 php-fpm|php-fpm|9000
 MariaDB|mariadb|3306 (default)
 Memcached|memcached|11211 (default)
-Redis|redis|6379 (default)
-SMTP (Mailhog)|mailhog|1025 (default)
 
 # Docker compose cheatsheet #
 
@@ -82,12 +80,19 @@ SMTP (Mailhog)|mailhog|1025 (default)
   * Stop containers: `docker-compose stop`
   * Kill containers: `docker-compose kill`
   * View container logs: `docker-compose logs`
-  * Execute command inside of container: `docker-compose exec SERVICE_NAME COMMAND` where `COMMAND` is whatever you want to run. Examples:
+  * Execute command inside of container: `docker-compose exec SERVICE_NAME COMMAND` where `COMMAND` is whatever you want to run.
 
-  Shell into the PHP container,
-          `docker-compose exec php-fpm bash`
-  Open a mysql shell,
-          `docker-compose exec mysql mysql -uroot -pCHOSEN_ROOT_PASSWORD`
+ **Examples:**
+
+  * Shell into the PHP container,
+
+  `docker-compose exec php-fpm bash`
+  * Restart nginx,
+
+  `docker exec reverse nginx -s reload`
+  * Open a mysql shell,
+
+  `docker-compose exec mysql mysql -uroot -pCHOSEN_ROOT_PASSWORD`
 
 # Recommendations #
 
