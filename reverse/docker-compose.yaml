@@ -1,12 +1,12 @@
 ###############################################################################
 #                         nginx reverse proxy                                 #
 ###############################################################################
-version: "3.1"
+version: "3.7"
 
 services:
   reverse:
     networks:
-    - fasterj_default
+    - ${STACK_PREFIX}_default
 
     container_name: reverse
     hostname: reverse
@@ -19,8 +19,13 @@ services:
     volumes:
       - ./nginx:/etc/nginx
       - ./privatessl:/etc/ssl/private
-      - ./logs/${STACK_PREFIX}-reverse:/var/log/nginx
+      - log-disk:/var/log/nginx
 
 networks:
   fasterj_default:
     external: true
+
+volumes:
+    log-disk:
+      name: ${STACK_PREFIX}_log-disk
+      external: true
