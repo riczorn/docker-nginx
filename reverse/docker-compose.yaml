@@ -11,12 +11,15 @@ services:
     container_name: reverse
     hostname: reverse
     image: nginx
+    environment:
+      - BASE_HOSTNAME=${BASE_HOSTNAME}
     ports:
       - 80:80
       - 443:443
     volumes:
       - ./nginx:/etc/nginx
       - ./privatessl:/etc/ssl/private
+      - ./logs/${STACK_PREFIX}-reverse:/var/log/nginx
 
 networks:
   fasterj_default:
