@@ -17,21 +17,6 @@ services:
     image:          memcached:alpine
     container_name: ${STACK_PREFIX}-memcached
 
-  phpmyadmin:
-    build:          settings/phpmyadmin
-    container_name: ${STACK_PREFIX}-phpmyadmin
-    working_dir:    /application
-    environment:
-     - PMA_ARBITRARY=1
-     - PMA_ABSOLUTE_URI=http://s10.tmg.it/pma/
-     - PMA_HOST=mariadb
-    restart:        always
-    ports:
-      - "8080:80"
-    volumes:
-     - /sessions
-     - /application:/var/www/html
-
   mariadb:
     image:          mariadb:10.4
     container_name: ${STACK_PREFIX}-mariadb
