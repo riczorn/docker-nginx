@@ -9,9 +9,9 @@ services:
     container_name: ${STACK_PREFIX}-webserver
     working_dir:    /application
     volumes:
-        - .:/application
-        - ./settings/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-        - ./logs/${STACK_PREFIX}-nginx:/var/log/nginx
+      - .:/application
+      - ./settings/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./logs/${STACK_PREFIX}-nginx:/var/log/nginx
 
   memcached:
     image:          memcached:alpine
