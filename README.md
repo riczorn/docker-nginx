@@ -147,6 +147,6 @@ It's hard to avoid file permission issues when fiddling about with containers du
 
 
   [p-containers]: https://github.com/riczorn/docker-nginx/raw/master/resources/images/portainer.png "Portainer containers"
-  [p-netwworks]:  https://github.com/riczorn/docker-nginx/raw/master/resources/images/portainer-networks.png "Portainer networks"
+  [p-networks]:  https://github.com/riczorn/docker-nginx/raw/master/resources/images/portainer-networks.png "Portainer networks"
   [p-volumes]:    https://github.com/riczorn/docker-nginx/raw/master/resources/images/portainer-volumes.png "Portainer volumes"
-  [nginx-default-website] https://github.com/riczorn/docker-nginx/raw/master/resources/images/nginx-default-site.png "nginx default website"
+  [nginx-default-website]: https://github.com/riczorn/docker-nginx/raw/master/resources/images/nginx-default-site.png "nginx default website"
