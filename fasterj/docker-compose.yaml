@@ -8,6 +8,8 @@ services:
     hostname:       webserver
     container_name: ${STACK_PREFIX}-webserver
     working_dir:    /application
+    environment:
+      - BASE_HOSTNAME:${BASE_HOSTNAME}
     volumes:
       - .:/application
       - ./settings/nginx/:/etc/nginx/

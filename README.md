@@ -3,7 +3,7 @@ Simple Docker - Nginx configuration
 
 This project contains two stacks:
 
-  * a simple **nginx** server for development with a basic php stack.
+  * a simple **nginx** server for development with a basic php/mariadb stack.
   * a very basic **reverse proxy** so you can spool more than one of the above.
 
 **Please note**: passwords and prefix are stored in the environment file `.env`
@@ -37,8 +37,8 @@ In `./fasterj/.env` you can set the main stack name (then rename `./fasterj` acc
 give the name to the network and volume created: the Reverse stack has the same file symbolically linked, and it will use
 it to determine the network and log disk names, i.e.
 
-* network: fasterj_default
-* volume:  fasterj_log-disk
+* network: **fasterj_default**
+* volume:  **fasterj_log-disk**
 
 
 # Install, build and run the stack #
@@ -65,9 +65,8 @@ This stack was built starting from a https://phpdocker.io stack.
 You can access your application via **`localhost`**, if you're running the containers directly, or through **``** when run on a vm. nginx and mailhog both respond to any hostname, in case you want to add your own hostname on your `/etc/hosts`
 
 Service|Address outside containers
-------|---------|-----------
-Webserver|[localhost:8080](http://localhost:8080)
-Mailhog web interface|[localhost:8081](http://localhost:8081)
+--------------|-----------
+Webserver|[localhost](http://localhost)
 MariaDB|**host:** `localhost`; **port:** `8083`
 
 ## Hosts within your environment ##
@@ -79,6 +78,21 @@ Service|Hostname|Port number
 php-fpm|php-fpm|9000
 MariaDB|mariadb|3306 (default)
 Memcached|memcached|11211 (default)
+
+# Web Reverse Proxy #
+
+The `reverse` stack contains an nginx reverse proxy which routes three domains to different containers and name-based hosts.  You can configure additional servers adding them to `reverse/nginx/conf.d/sites-available`, then create a symbolic link in `sites-enabled`: from the `sites-enabled` folder, run:
+
+```
+ln -ls ../sites-available/newsite.conf .
+```
+
+# Virtual name-based web servers #
+
+**nginx** is configured to serve a main server (answering all calls) with thhe code published in `fasterj/public/default` and a name-based virtual server with its root in `fasterj/public/clouds`.
+You can easily change / enable / disable the configs simply look at` /fasterj/settings/nginx/conf.d/sites-available` and create a symbolic link in sites-enabled, then restart nginx.
+Please note no environment substitution takes place in the nginx config files hence the server names there are static.
+
 
 # Docker compose cheatsheet #
 
@@ -96,6 +110,9 @@ Memcached|memcached|11211 (default)
   * Shell into the PHP container,
 
   `docker-compose exec php-fpm bash`
+  * Test nginx configuration,
+
+  `docker exec reverse nginx -t`
   * Restart nginx,
 
   `docker exec reverse nginx -s reload`
@@ -111,5 +128,6 @@ It's hard to avoid file permission issues when fiddling about with containers du
   * Run commands (ie Symfony's console, or Laravel's artisan) straight inside of your container. You can easily open a shell as described above and do your thing from there.
 
 ## Credits ##
+Riccardo Zorn, https://fasterweb.net/
 Francesco D'Agostino, https://www.farm.it/
 Kasper Siig, https://www.freecodecamp.org/news/docker-nginx-letsencrypt-easy-secure-reverse-proxy-40165ba3aee2/
