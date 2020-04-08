@@ -32,6 +32,15 @@ and now point to [your-server.com:9000](http://localhost:9000) and enjoy Portain
 
 `rc-update add docker`
 
+# Configure the stack
+In `./fasterj/.env` you can set the main stack name (then rename `./fasterj` accordingly) which in turn will
+give the name to the network and volume created: the Reverse stack has the same file symbolically linked, and it will use
+it to determine the network and log disk names, i.e.
+
+* network: fasterj_default
+* volume:  fasterj_log-disk
+
+
 # Install, build and run the stack #
 
 Copy this folder under `/opt`, then
