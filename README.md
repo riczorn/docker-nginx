@@ -64,17 +64,17 @@ This stack was built starting from a https://phpdocker.io stack.
 
 You can access your application via **`localhost`**, if you're running the containers directly, or through **``** when run on a vm. nginx responds to any hostname, in case you want to add your own hostname on your `/etc/hosts`
 
-Service|Address outside containers
-------|---------|-----------
-Webserver|[localhost](http://localhost)
-MariaDB|**host:** `localhost`; **port:** `8083`
+Service | Address outside containers
+------- | --------------------
+Webserver | [localhost](http://localhost)
+MariaDB | **host:** `localhost`; **port:** `8083`
 
 ## Hosts within your environment ##
 
 You'll need to configure your application to use any services you enabled:
 
 Service|Hostname|Port number
-------|---------|-----------
+------|---------|-----------:
 php-fpm|php-fpm|9000
 MariaDB|mariadb|3306 (default)
 Memcached|memcached|11211 (default)
@@ -107,18 +107,20 @@ Please note no environment substitution takes place in the nginx config files he
 
  **Examples:**
 
-  * Shell into the PHP container,
+ ```
+ # Shell into the PHP container,
+  docker-compose exec php-fpm bash
 
-  `docker-compose exec php-fpm bash`
-  * Test nginx configuration,
+  # Test nginx configuration,
+  docker exec reverse nginx -t
 
-  `docker exec reverse nginx -t`
-  * Restart nginx,
+  # Restart nginx
+  docker exec reverse nginx -s reload
 
-  `docker exec reverse nginx -s reload`
-  * Open a mysql shell,
+  # Open a mysql shell
+  docker-compose exec mysql mysql -uroot -pCHOSEN_ROOT_PASSWORD
+  ```
 
-  `docker-compose exec mysql mysql -uroot -pCHOSEN_ROOT_PASSWORD`
 
 # Recommendations #
 
