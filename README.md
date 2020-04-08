@@ -130,6 +130,16 @@ It's hard to avoid file permission issues when fiddling about with containers du
   * Run commands (ie Symfony's console, or Laravel's artisan) straight inside of your container. You can easily open a shell as described above and do your thing from there.
 
 ## Credits ##
-Riccardo Zorn, https://fasterweb.net/
-Francesco D'Agostino, https://www.farm.it/
-Kasper Siig, https://www.freecodecamp.org/news/docker-nginx-letsencrypt-easy-secure-reverse-proxy-40165ba3aee2/
+
+* Riccardo Zorn, https://fasterweb.net/
+* Francesco D'Agostino, https://www.farm.it/
+* Services and online resources:
+  * Php Docker, https://phpdocker.io
+  * Kasper Siig, https://www.freecodecamp.org/news/docker-nginx-letsencrypt-easy-secure-reverse-proxy-40165ba3aee2/
+
+
+  ![alt text][p-networks]
+
+  [p-containers]: https://github.com/riczorn/docker-nginx/blob/master/resources/images/portainer.png "Portainer containers"
+  [p-netwworks]: https://github.com/riczorn/docker-nginx/blob/master/resources/images/portainer-networks.png "Portainer networks"
+  [p-volumes]: https://github.com/riczorn/docker-nginx/blob/master/resources/images/portainer-volumes.png "Portainer volumes"
