@@ -62,10 +62,10 @@ This stack was built starting from a https://phpdocker.io stack.
 
 ## Services exposed outside your environment ##
 
-You can access your application via **`localhost`**, if you're running the containers directly, or through **``** when run on a vm. nginx and mailhog both respond to any hostname, in case you want to add your own hostname on your `/etc/hosts`
+You can access your application via **`localhost`**, if you're running the containers directly, or through **``** when run on a vm. nginx responds to any hostname, in case you want to add your own hostname on your `/etc/hosts`
 
 Service|Address outside containers
---------------|-----------
+------|---------|-----------
 Webserver|[localhost](http://localhost)
 MariaDB|**host:** `localhost`; **port:** `8083`
 
