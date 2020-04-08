@@ -28,6 +28,8 @@ docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /va
 
 and now point to [your-server.com:9000](http://localhost:9000) and enjoy Portainer.
 
+![Portainer Containers][p-containers]
+
 ### Autoload Docker
 
 `rc-update add docker`
@@ -38,7 +40,11 @@ give the name to the network and volume created: the Reverse stack has the same 
 it to determine the network and log disk names, i.e.
 
 * network: **fasterj_default**
+![Portainer Network][p-networks]
+
 * volume:  **fasterj_log-disk**
+![Portainer Volumes][p-volumes]
+
 
 
 # Install, build and run the stack #
@@ -93,6 +99,8 @@ ln -ls ../sites-available/newsite.conf .
 You can easily change / enable / disable the configs simply look at` /fasterj/settings/nginx/conf.d/sites-available` and create a symbolic link in sites-enabled, then restart nginx.
 Please note no environment substitution takes place in the nginx config files hence the server names there are static.
 
+![Default website][nginx-default-website]
+
 
 # Docker compose cheatsheet #
 
@@ -138,8 +146,7 @@ It's hard to avoid file permission issues when fiddling about with containers du
   * Kasper Siig, https://www.freecodecamp.org/news/docker-nginx-letsencrypt-easy-secure-reverse-proxy-40165ba3aee2/
 
 
-  ![alt text][p-networks]
-
-  [p-containers]: https://github.com/riczorn/docker-nginx/blob/master/resources/images/portainer.png "Portainer containers"
-  [p-netwworks]: https://github.com/riczorn/docker-nginx/blob/master/resources/images/portainer-networks.png "Portainer networks"
-  [p-volumes]: https://github.com/riczorn/docker-nginx/blob/master/resources/images/portainer-volumes.png "Portainer volumes"
+  [p-containers]: https://github.com/riczorn/docker-nginx/raw/master/resources/images/portainer.png "Portainer containers"
+  [p-netwworks]:  https://github.com/riczorn/docker-nginx/raw/master/resources/images/portainer-networks.png "Portainer networks"
+  [p-volumes]:    https://github.com/riczorn/docker-nginx/raw/master/resources/images/portainer-volumes.png "Portainer volumes"
+  [nginx-default-website] https://github.com/riczorn/docker-nginx/raw/master/resources/images/nginx-default-site.png "nginx default website"
