@@ -1,0 +1,29 @@
+{
+    "name": "swissChess",
+    "version": "1.0.0",
+    "description": "Play swiss tournaments on licheses",
+    "homepage": "https://quattropedoni.it",
+    "author": "Riccardo Zorn <riccardo@fasterjoomla.com> (https://fasterweb.net)",
+    "private": true,
+    "scripts": {
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:cov": "jest --coverage",
+        "start": "node src/main",
+        "profile": "node --prof src/main",
+        "inspect": "node --inspect src/main"
+    },
+    "files": [
+        "src"
+    ],
+    "main": "src/main.js",
+    "devDependencies": {},
+    "dependencies": {
+        "axios": "^0.19.2",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "jest": "^23.5.0",
+        "path": "^0.12.7",
+        "simple-oauth2": "^3.4.0"
+    }
+}

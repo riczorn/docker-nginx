@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="it-IT">
+<!-- Lichess is open source! See https://github.com/ornicar/lila -->
+<!-- https://rubenwardy.com/lichess_widgets/ -->
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Quattropedoni Lichess Group</title>
+
+  <link href="assets/site.css" type="text/css" rel="stylesheet">
+  <link href="assets/challenge.css" type="text/css" rel="stylesheet">
+
+  <link rel="mask-icon" href="https://lichess1.org/assets/logo/lichess.svg" style="color: black;">
+  <link rel="icon" type="image/png" href="https://lichess1.org/assets/logo/lichess-favicon-512.png" sizes="512x512">
+  <link rel="icon" type="image/png" href="https://lichess1.org/assets/logo/lichess-favicon-256.png" sizes="256x256">
+  <link rel="icon" type="image/png" href="https://lichess1.org/assets/logo/lichess-favicon-192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="https://lichess1.org/assets/logo/lichess-favicon-128.png" sizes="128x128">
+  <link rel="icon" type="image/png" href="https://lichess1.org/assets/logo/lichess-favicon-64.png" sizes="64x64">
+  <link id="favicon" rel="icon" type="image/png" href="https://lichess1.org/assets/logo/lichess-favicon-32.png" sizes="32x32">
+  <script>
+    let quattro;
+  </script>
+</head>
+
+<body class="dark metal Light-Wood RedVBlue coords-out online" data-theme="dark">
+
+  <header id="top">
+    <div class="site-title-nav">
+
+      <input type="checkbox" id="tn-tg" class="topnav-toggle fullscreen-toggle" aria-label="Navigation">
+
+      <label for="tn-tg" class="fullscreen-mask">
+</label>
+
+      <label for="tn-tg" class="hbg">
+<span class="hbg__in">
+</span>
+</label>
+      <h1 class="site-title">
+<a href="https://lichess.org/">lichess
+<span>.org
+</span>
+</a>
+</h1>
+      <nav id="topnav" class="hover">
+        <section>
+          <a href="https://lichess.org/">
+<span class="play">Gioca
+</span>
+</a>
+        </section>
+        <section>
+          <a href="https://quattropedoni.it/">
+<span class="play">Quattropedoni
+</span>
+</a>
+        </section>
+
+      </nav>
+    </div>
+    <div class="site-buttons">
+
+
+      <div class="dasher">
+        <a href="https://quattropedoni.it/">
+<img src="https://quattropedoni.it/images/template/logo_106.png" style="width:32px">
+</a>
+
+      </div>
+    </div>
+  </header>
+
+
+  <div id="main-wrap" class="is2d">
+    <main class="page-small challenge-page box box-pad">
+
+      <div class="follow-up">
+        <h1>Sfida un campione</h1>
+        <div class="details">
+          <div class="variant" data-icon="+">
+            <div>Classical
+              <br>
+              <span class="clock">15' + 10"
+</span>
+            </div>
+          </div>
+          <div class="mode"><a href="auth">Login</a>
+          </div>
+        </div>
+
+        <div id="playersCont">
+          <div id="sort">
+            <a onclick="sort('name')">Nome</a>
+            <a onclick="sort('last')">Cognome</a>
+            <a onclick="sort('nick')">Nickname</a>
+          </div>
+          <div id="players">
+
+          </div>
+        </div>
+
+        <a class="button button-fat" href="https://lichess.org/">Nuovo avversario
+</a>
+
+      </div>
+    </main>
+  </div>
+
+
+
+
+  <div class="content_wrap">
+    <div class="content list right">
+      by Ric
+    </div>
+  </div>
+  </div>
+  </div>
+  <form id="lichess" action="" method="post">
+    <input type="hidden" name="variant" value="1">
+    <input type="hidden" name="fen" value="null">
+    <input type="hidden" name="timeMode" value="1">
+    <input type="hidden" name="time" value="25.0">
+    <input type="hidden" name="increment" value="15">
+    <input type="hidden" name="days" value="2">
+    <input type="hidden" name="mode" value="0">
+    <input type="hidden" name="color" value="white">
+    <input type="submit" style="display:none">
+  </form>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="assets/no-hacks-please.js"></script>
+  <script src="assets/quattropedoni.js"></script>
+  <script>
+    quattro = new Quattro();
+    $(() => {
+      // quattro.init('players', false); // debug
+      quattro.init('players', true); // prod
+    })
+
+    function sort(key) {
+      console.log('firstsort', key)
+      quattro.sort(key);
+    }
+  </script>
+</body>
+
+</html>

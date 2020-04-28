@@ -1,0 +1,23 @@
+###############################################################################
+#                         node                                                #
+###############################################################################
+version: "3.7"
+services:
+  swissnode:
+    networks:
+    - fasterj_default
+    image: node:alpine
+    user: node
+    hostname: swissnode
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./src/:/home/node/app
+    command: "npm start"
+    ports:
+      - "8086:8080"
+
+networks:
+  fasterj_default:
+    external: true
